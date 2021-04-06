@@ -1,5 +1,8 @@
 package br.com.springbootconfig;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -7,12 +10,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class GreetingController {
 	
-	@Value("${my.greeting}")
+	@Value("${my.greeting: default value}")
 	private String greetingMessage;
 	
+	@Value("${my.list.values}")
+	private List<String> listValues;
+	
+	@Value("#{${my.db.values}}")
+	private Map<String, String> mapValues;
+	
 	@GetMapping("/greeting")
-	public String greenting() {
-		return this.greetingMessage;
+	public String greeting() {
+		return this.greetingMessage + this.listValues + this.mapValues;
 	}
 
 }

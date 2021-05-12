@@ -1,0 +1,17 @@
+my:
+  greeting: Hello World
+  list:
+    values: One,Two,Three
+  db:
+    values: "{connection: '10.1.101.2', user: 'foo', password: 'pass'}"
+   
+app:
+  name: My app
+  description: Welcome to ${app.name}
+
+db:
+  connection: "{connection: 'http://___', user: 'foo', password: 'pass'}"
+  host: 127.0.0.1
+  port: 5432
+
+management.endpoints.web.exposure.include: "*"
